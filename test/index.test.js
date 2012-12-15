@@ -1,5 +1,4 @@
 var should = require('chai').should()
-  , expect = require('chai').expect
   , protocol = require('../src/index')
 
 describe('Protocol', function () {
@@ -34,6 +33,19 @@ describe('Protocol', function () {
 			Sequence.implement(H, {random:function () {return this.value}})
 			Sequence(new H).random.should.be.a('function')
 		})
+		it('should not require a specific implementation', function () {
+			function B() {}
+			Sequence.implement(B)
+			Sequence(new B).first.should.equal(defaults.first)
+			Sequence(new B).rest.should.equal(defaults.rest)
+		})
+	})
+	describe('.get(type)', function () {
+		it('should return the constructor function mapped to that type', function () {
+			debugger;
+			Sequence.get(String).should.equal(StringWrapper)
+			Sequence.get(Array).should.equal(ArrayWrapper)
+		})
 	})
 	
 	describe('for basic types', function () {
@@ -42,10 +54,10 @@ describe('Protocol', function () {
 			Sequence([]).should.be.an.instanceOf(ArrayWrapper)
 		})
 		it('should be able to invoke the default implementations', function () {
-			expect(Sequence('abcd').first()).to.equal('a')
-			expect(Sequence('abcd').rest()).to.equal('bcd')
-			expect(Sequence([1, 2, 3, 4]).first()).to.equal(1)
-			expect(Sequence([1, 2, 3, 4]).rest()).to.eql([2, 3, 4])
+			Sequence('abcd').first().should.equal('a')
+			Sequence('abcd').rest().should.equal('bcd')
+			Sequence([1, 2, 3, 4]).first().should.equal(1)
+			Sequence([1, 2, 3, 4]).rest().should.deep.equal([2, 3, 4])
 		})
 	})
 	
@@ -82,7 +94,7 @@ describe('Protocol', function () {
 			}
 		})
 		it('should allow extension of specific types', function () {
-			expect(Sequence('abc').reverse().value).to.equal('cba')
+			Sequence('abc').reverse().value.should.equal('cba')
 		})
 		it('should add default methods', function () {
 			ArrayWrapper.prototype.reverse.should.be.a('function')

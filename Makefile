@@ -1,8 +1,8 @@
 all: clean build test docs
 
 build:
-	@mkdir dist
-	@bigfile --write=dist/Protocol -pc
+	@mkdir -p dist
+	@bigfile --write=dist/Protocol.js -pc -x Protocol
 
 test:
 	@mocha -R spec test/index.test.js

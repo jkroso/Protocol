@@ -17,11 +17,12 @@ In Node.js
 ```javascript
 var Protocol = require('protocol')
 ```
-  - [createProtocol()](#createprotocol)
+  - [Protocol()](#protocol)
+  - [dispatcher.get](#dispatcherget)
   - [dispatcher.implement()](#dispatcherimplementtypeconstructorfactoryconstructor)
-  - [dispatcher.extend()](#dispatcherextend)
+  - [dispatcher.extend()](#dispatcherextendtypeconstructoraddobject)
 
-## createProtocol()
+## Protocol()
 
   Create a new kind of abstraction
   
@@ -37,19 +38,35 @@ var Enumerable = createProtocol({
 })
 ```
 
+## dispatcher.get
+
+  Get the implementation of a certain type if it has one
+  
+```js
+enumerable.get(Array) -> [Function ArrayWrapper]
+```
+
 ## dispatcher.implement(type:Constructor, factory:Constructor)
 
   Add an implementation for type to the protocol
   
 ```js
-enumerable.register(String, function(value){
+enumerable.implement(String, function(value){
   this.value = value
 })
 ```
 
-## dispatcher.extend()
+## dispatcher.extend(type:Constructor, add:Object)
 
   Add methods to the protocols interface
+  
+```js
+enumerable.extend({
+  toArray: function(){
+    return Array.apply(null, this.value)
+  }
+})
+```
 
 ## Basic Usage
 

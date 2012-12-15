@@ -70,11 +70,13 @@ function Protocol (ui) {
 		var proto = factory.prototype
 		  , methods = Object.keys(ui)
 		  , i = methods.length
+		
 		while (i--) {
-			if (typeof proto[methods[i]] !== 'function') {
+			if (!proto.hasOwnProperty(methods[i])) {
 				proto[methods[i]] = ui[methods[i]]
 			}
 		}
+
 		types.push(type)
 		imps.push(factory)
 		return this
@@ -115,7 +117,6 @@ function Protocol (ui) {
 function merge (a, b) {
 	var keys = Object.keys(b)
 	  , i = keys.length
-	while (i--) {
+	while (i--)
 		a[keys[i]] = b[keys[i]]
-	}
 }

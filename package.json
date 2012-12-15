@@ -1,5 +1,5 @@
 {
-  "name": "protocol",
+  "name": "ooprocol",
   "version": "0.1.0",
   "description": "An object orientated take on protocols",
   "main": "src/index.js",

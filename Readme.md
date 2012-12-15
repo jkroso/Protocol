@@ -10,7 +10,7 @@ In the browser grab either the [production version][min] or the [development ver
 
 In Node.js 
 
-`npm install protocol`
+`npm install ooprocol`
 
 ## API
 

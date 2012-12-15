@@ -23,7 +23,7 @@ function Protocol (ui) {
 	var types = []
 	  , imps = []
 
-	ui || (ui = {})
+	dispatcher.interface = ui || (ui = {})
 
 	function dispatcher (value) {
 		var Wrapper = get(value.constructor)

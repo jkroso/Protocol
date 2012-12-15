@@ -1,0 +1,25 @@
+{
+  "name": "protocol",
+  "version": "0.1.0",
+  "description": "An object orientated take on protocols",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "laissez-faire": "*"
+  },
+  "scripts" : {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jkroso/Protocol.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jkroso/Protocol/issues"
+  },
+  "keywords": ["protocol","dispatch","extensability"],
+  "author": "Jakeb Rosoman",
+  "license": "MIT"
+}

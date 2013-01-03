@@ -5,5 +5,6 @@
 /Rakefile
 /tests/
 /glue.js
+/dist
 *.sublime-project
 *.sublime-workspace

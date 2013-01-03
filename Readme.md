@@ -3,40 +3,23 @@
 An object orientated take on protocols
 
 ## Getting Started
-In the browser grab either the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/jkroso/Protocol/master/dist/protocol.min.js
-[max]: https://raw.github.com/jkroso/Protocol/master/dist/protocol.js
+In the browser
+
+`component install jkroso/protocol`
 
 In Node.js 
 
-`npm install ooprocol`
+`npm install protocol`
 
 ## API
 
 ```javascript
 var Protocol = require('protocol')
 ```
-  - [Protocol()](#protocol)
   - [dispatcher.get](#dispatcherget)
   - [dispatcher.implement()](#dispatcherimplementtypeconstructorfactoryconstructor)
   - [dispatcher.extend()](#dispatcherextendtypeconstructoraddobject)
-
-## Protocol()
-
-  Create a new kind of abstraction
-  
-```js
-var Enumerable = createProtocol({
-  first: function(){return this.value[0]},
-  each: function(fn){
-    for (var i = 0; i < this.value.length; i++) {
-      fn(this.value[i])
-    }
-    return this
-  }
-})
-```
 
 ## dispatcher.get
 

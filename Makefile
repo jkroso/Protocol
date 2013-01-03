@@ -1,4 +1,4 @@
-all: clean build test docs
+all: clean build test
 
 build:
 	@mkdir -p dist
@@ -13,9 +13,9 @@ test-browser:
 clean:
 	@rm -rf dist test/browser-built.js
 
-docs:
+Readme.md: docs/head.md docs/tail.md src/index.js
 	@cat docs/head.md > Readme.md
-	@dox --api < src/index.js >> Readme.md
+	@cat src/index.js | sed s/^[^a-z]// | dox --api >> Readme.md
 	@cat docs/tail.md >> Readme.md
 
-.PHONY: all build test test-browser clean docs
+.PHONY: all build test test-browser clean

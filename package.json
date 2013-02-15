@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "description": "An object orientated take on protocols",
   "main": "src/index.js",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
-    "laissez-faire": "*"
+    "sourcegraph": "~0.4.3",
+    "bigfile": "~0.2.3"
   },
-  "scripts" : {
+  "scripts": {
     "test": "make test"
   },
   "repository": {
@@ -19,7 +21,11 @@
   "bugs": {
     "url": "https://github.com/jkroso/Protocol/issues"
   },
-  "keywords": ["protocol","dispatch","extensability"],
+  "keywords": [
+    "protocol",
+    "dispatch",
+    "extensability"
+  ],
   "author": "Jakeb Rosoman",
   "license": "MIT"
 }

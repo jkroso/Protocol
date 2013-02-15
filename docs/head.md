@@ -10,7 +10,7 @@ In the browser
 
 In Node.js 
 
-`npm install protocol`
+`npm install jkroso/protocol`
 
 ## API
 

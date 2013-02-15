@@ -1,11 +1,3 @@
-## Basic Usage
-
-```javascript
-// example here
-```
-
-## Contributing
-Please do! And if looking at this project leads to any thoughts, perhaps its similar to something else, seems weak, or you wonder why I did something a certain way. let me know through github's issue system.
 
 ## Release History
 _(Nothing yet)_

@@ -1,21 +1,18 @@
-all: clean build test
-
-build:
-	@mkdir -p dist
-	@bigfile --write=dist/Protocol.js -pc -x Protocol
+all: test/built.js test Readme.md
 
 test:
-	@mocha -R spec test/index.test.js
+	@node_modules/.bin/mocha -R spec test/index.test.js
 
-test-browser:
-	@bigfile --entry=test/browser.js --write=test/browser-built.js -lb
+test/built.js: src/* test/*
+	@node_modules/.bin/sourcegraph.js test/browser.js \
+		--plugins mocha,nodeish,javascript \
+		| node_modules/.bin/bigfile \
+		 	--export null \
+		 	--plugins nodeish > $@
 
-clean:
-	@rm -rf dist test/browser-built.js
-
-Readme.md: docs/head.md docs/tail.md src/index.js
+Readme.md: docs/* src/*
 	@cat docs/head.md > Readme.md
-	@cat src/index.js | sed s/^[^a-z]// | dox --api >> Readme.md
+	@cat src/index.js | dox --api >> Readme.md
 	@cat docs/tail.md >> Readme.md
 
-.PHONY: all build test test-browser clean
+.PHONY: all test

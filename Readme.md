@@ -10,18 +10,35 @@ In the browser
 
 In Node.js 
 
-`npm install protocol`
+`npm install jkroso/protocol`
 
 ## API
 
 ```javascript
 var Protocol = require('protocol')
 ```
-  - [dispatcher.get](#dispatcherget)
-  - [dispatcher.implement()](#dispatcherimplementtypeconstructorfactoryconstructor)
-  - [dispatcher.extend()](#dispatcherextendtypeconstructoraddobject)
+  - [Protocol()](#protocol)
+  - [protocol.get](#protocolget)
+  - [protocol.implement()](#protocolimplementtypefunctionfactoryfunctionobjectnull)
+  - [protocol.extend()](#protocolextendtypefunctionaddobject)
 
-## dispatcher.get
+## Protocol()
+
+  Create a new kind of abstraction
+  
+```js
+var Enumerable = protocol('Enumerable', {
+  first: function(){return this._[0]},
+  each: function(fn){
+    for (var i = 0; i < this._.length; i++) {
+      fn(this._[i])
+    }
+    return this
+  }
+})
+```
+
+## protocol.get
 
   Get the implementation of a certain type if it has one
   
@@ -29,17 +46,37 @@ var Protocol = require('protocol')
 enumerable.get(Array) -> [Function ArrayWrapper]
 ```
 
-## dispatcher.implement(type:Constructor, factory:Constructor)
+## protocol.implement(type:Function, [factory]:Function|Object|null)
 
-  Add an implementation for type to the protocol
+  Add an implementation for `type` to the protocol
+  
+  Custom constructor. Its prototype will be extended with any
+  methods of the protocol you haven't defined
   
 ```js
 enumerable.implement(String, function(value){
-  this.value = value
+  this._ = value
 })
 ```
 
-## dispatcher.extend(type:Constructor, add:Object)
+  
+  Default constructor with custom methods. Any methods in the protocol
+  that you don't define will get the default implementation
+  
+```js
+enumerable.implement(String, {
+  first: function(){return this._[0]}
+})
+```
+
+  
+  Fully default implementation
+  
+```js
+enumerable.implement(String)
+```
+
+## protocol.extend([type]:Function, add:Object)
 
   Add methods to the protocols interface
   
@@ -51,14 +88,6 @@ enumerable.extend({
 })
 ```
 
-## Basic Usage
-
-```javascript
-// example here
-```
-
-## Contributing
-Please do! And if looking at this project leads to any thoughts, perhaps its similar to something else, seems weak, or you wonder why I did something a certain way. let me know through github's issue system.
 
 ## Release History
 _(Nothing yet)_

@@ -2,12 +2,12 @@
   "name": "protocol",
   "repo": "jkroso/Protocol",
   "description": "An object orientated take on protocols",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": ["protocol","dispatch","extensability"],
   "dependencies": {},
   "main": "src/index.js",
   "scripts": [
-	"src/index.js"
+	  "src/index.js"
   ],
   "styles":[],
   "license": "MIT"
